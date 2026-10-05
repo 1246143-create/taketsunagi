@@ -285,7 +285,9 @@ textarea{min-height:76px;resize:vertical}
 .chatbar{display:flex;gap:8px;flex-direction:row}
 .chatbar textarea{min-height:44px;height:44px;resize:none;flex:1;min-width:0;width:auto}
 .chatbar .btn{width:auto;min-height:44px;padding:0 16px}
-.thread{display:flex;gap:12px;align-items:center;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-align:left;width:100%}
+/* 一覧の中身が長くても、カードは画面幅におさめて中で省略する */
+.list>*,.cards>*,.stack>*,.msgs>*{min-width:0}
+.thread{min-width:0;display:flex;gap:12px;align-items:center;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-align:left;width:100%}
 .thread .t{flex:1;min-width:0}
 .thread b{display:block;font-size:15px}
 .thread small{display:block;color:var(--muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
