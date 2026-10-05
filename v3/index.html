@@ -34,12 +34,14 @@
 body{margin:0;background:var(--outer);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;display:flex;justify-content:center}
 img{max-width:100%}
 button,input,select,textarea{font:inherit;color:inherit}
+/* iPhone は16px未満の入力欄をタップすると画面を拡大してしまうので16pxにそろえる */
+input,select,textarea{font-size:16px!important}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.35}
 p{margin:0}
 
-.app{position:relative;width:100%;max-width:440px;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg)}
+.app{position:relative;width:100%;max-width:440px;overflow-x:clip;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg)}
 @media (max-width:479px){body{background:var(--bg)}}
 @media (min-width:480px){.app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(0,0,0,.12)}}
 
@@ -54,8 +56,8 @@ p{margin:0}
 .chip-top.owner{background:var(--bamboo-soft);color:var(--bamboo)}
 
 #view{flex:1;padding:16px 16px 28px;display:flex;flex-direction:column;gap:20px}
-.dock{position:sticky;bottom:0;z-index:1000}
-#action{padding:10px 16px;background:var(--surface);border-top:1px solid var(--line)}
+.dock{position:sticky;bottom:0;z-index:1000;width:100%;min-width:0}
+#action{min-width:0;overflow:hidden;padding:10px 16px;background:var(--surface);border-top:1px solid var(--line)}
 .tabnav{display:grid;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
 .tabnav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 0 9px;font-size:10.5px;color:var(--muted);position:relative}
 .tabnav button[aria-current="page"]{color:var(--bamboo);font-weight:700}
@@ -263,16 +265,16 @@ textarea{min-height:76px;resize:vertical}
 .seg button[aria-selected="true"]{background:var(--surface);color:var(--bamboo);box-shadow:var(--shadow)}
 
 /* chat */
-.chat-head{display:flex;gap:10px;align-items:center;padding:12px;background:var(--surface);border-radius:var(--r);border:1px solid var(--line)}
-.chat-head .t{flex:1;min-width:0}
+.chat-head{min-width:0;display:flex;gap:10px;align-items:center;padding:12px;background:var(--surface);border-radius:var(--r);border:1px solid var(--line)}
+.chat-head .t{flex:1;min-width:0;overflow-wrap:anywhere}
 .chat-head b{display:block;font-size:15px}
 .chat-head small{color:var(--muted);font-size:12.5px}
-.topics{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.topics{max-width:100%;display:flex;flex-wrap:wrap;gap:6px}
 .topics::-webkit-scrollbar{display:none}
-.topics button{flex:none;border:1.5px solid var(--bamboo);color:var(--bamboo);background:var(--surface);border-radius:99px;padding:4px 12px;font-size:13px;font-weight:700}
-.msgs{display:flex;flex-direction:column;gap:10px}
-.msg{max-width:82%;display:flex;flex-direction:column;gap:2px}
-.msg .bub{padding:9px 13px;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.topics button{border:1.5px solid var(--bamboo);color:var(--bamboo);background:var(--surface);border-radius:99px;padding:3px 10px;font-size:13px;font-weight:700}
+.msgs{display:flex;flex-direction:column;gap:10px;min-width:0;width:100%}
+.msg{max-width:82%;min-width:0;display:flex;flex-direction:column;gap:2px}
+.msg .bub{padding:9px 13px;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
 .msg time{font-size:11px;color:var(--muted)}
 .msg.me{align-self:flex-end;align-items:flex-end}
 .msg.me .bub{background:var(--bamboo);color:var(--on-bamboo);border-color:transparent;border-bottom-right-radius:4px}
@@ -281,7 +283,7 @@ textarea{min-height:76px;resize:vertical}
 .msg.sys{align-self:center;max-width:94%;text-align:center}
 .msg.sys .bub{background:var(--sun-soft);border:0;font-size:13px;color:var(--ink);border-radius:10px}
 .chatbar{display:flex;gap:8px;flex-direction:row}
-.chatbar textarea{min-height:44px;height:44px;resize:none;flex:1}
+.chatbar textarea{min-height:44px;height:44px;resize:none;flex:1;min-width:0;width:auto}
 .chatbar .btn{width:auto;min-height:44px;padding:0 16px}
 .thread{display:flex;gap:12px;align-items:center;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-align:left;width:100%}
 .thread .t{flex:1;min-width:0}
