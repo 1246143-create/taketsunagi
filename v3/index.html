@@ -534,7 +534,8 @@ const state = {
   f: { purposes: null, cats: new Set(), burden: 0, reward: '', when: '', dist: 0, sort: 'match' },
   selected: null, myTab: null, regPhoto: null, regLoc: null, mapView: null,
 };
-try { const uid = localStorage.getItem(USER_KEY); const u = uid && db.accounts.find(a => a.id === uid); if (u) { state.user = u; state.screen = 'home'; } } catch (e) {}
+// アプリを開いたときは、いつもログイン・アカウント登録画面から始める
+try { localStorage.removeItem(USER_KEY); } catch (e) {}
 
 /* ---------- ユーティリティ ---------- */
 const $ = s => document.querySelector(s);
@@ -1399,7 +1400,6 @@ function authErr(msgs) { const e = $('#authErr'); e.innerHTML = msgs.join('<br>'
 function login(u) {
   state.user = u; state.stack = []; state.screen = 'home'; state.params = {}; state.selected = null; state.myTab = null; state.mapView = null;
   state.f = { purposes: null, cats: new Set(), burden: 0, reward: '', when: '', dist: 0, sort: 'match' };
-  try { localStorage.setItem(USER_KEY, u.id); } catch (e) {}
   render(true);
   toast(`${u.name}さんとしてログインしました（${u.role === 'owner' ? '竹林所有者・農家' : '参加者'}）`);
 }

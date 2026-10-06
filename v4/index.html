@@ -620,7 +620,8 @@ db = loadDB();
 /* ---------- 状態 ---------- */
 const freshFilter = () => ({ purposes: null, tasks: new Set(), status: new Set(['open', 'work', 'keep']), beginner: false, burden: 0, reward: '', day: '', dist: 0, sort: 'match' });
 const state = { user: null, screen: 'auth', params: {}, stack: [], sheet: null, authTab: 'login', signupRole: null, here: { ...DEFAULT_HERE }, f: freshFilter(), selected: null, tabs: {}, regPhoto: null, regLoc: null, mapView: null };
-try { const uid = localStorage.getItem(USER_KEY); const u = uid && db.accounts.find(a => a.id === uid); if (u) { state.user = u; state.screen = 'home'; } } catch (e) {}
+// アプリを開いたときは、いつもログイン・アカウント登録画面から始める（ログイン状態は保存しない）
+try { localStorage.removeItem(USER_KEY); } catch (e) {}
 
 /* ---------- ユーティリティ ---------- */
 const $ = s => document.querySelector(s);
@@ -1717,7 +1718,6 @@ function showErr(sel, msgs) { const e = $(sel); e.innerHTML = msgs.join('<br>');
 function login(u, isNew) {
   state.user = u; state.stack = []; state.screen = 'home'; state.params = {}; state.selected = null; state.tabs = {}; state.mapView = null; state.f = freshFilter();
   if (isOwner()) state.f.sort = 'near';
-  try { localStorage.setItem(USER_KEY, u.id); } catch (e) {}
   render(true);
   toast(isNew ? `登録しました。ようこそ、${u.name}さん！` : `${u.name}さんとしてログインしました（${u.role === 'owner' ? '竹林所有者・農家' : '参加者'}）`);
 }
