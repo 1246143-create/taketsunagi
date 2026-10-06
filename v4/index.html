@@ -89,7 +89,7 @@ p{margin:0}
 .concept svg.art{position:absolute;inset:0;width:100%;height:100%}
 .concept>*:not(svg){position:relative}
 /* 実際の竹林の写真。文字が読めるよう下に向かって濃くなる緑のかげをのせる（明暗どちらのテーマでも白文字） */
-.concept.photo{min-height:230px;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(18,42,26,.25) 0%,rgba(18,42,26,.55) 45%,rgba(18,42,26,.88) 100%),url(hero.jpg) center 40%/cover #2d6a3e}
+.concept.photo{min-height:230px;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(18,42,26,.25) 0%,rgba(18,42,26,.55) 45%,rgba(18,42,26,.88) 100%),url(img/hero.jpg) center 45%/cover #2d6a3e}
 .concept.photo h2,.concept.photo p{text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .concept .hello{font-size:13px;font-weight:700;opacity:.9}
 .concept h2{font-size:21px;font-weight:900;line-height:1.45}
@@ -146,6 +146,8 @@ p{margin:0}
 .legend button[aria-pressed="true"]{border-color:var(--c);color:var(--ink)}
 .legend button[aria-pressed="false"] i{opacity:.35}
 .leaflet-popup-content{font-family:var(--f-body);font-size:13px;margin:12px 14px;min-width:200px}
+.pop-img{aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-bottom:6px}
+.pop-img img{width:100%;height:100%;object-fit:cover;display:block}
 .pop h4{margin:0 0 4px;font-family:var(--f-display);font-size:15px}
 .pop dl{display:grid;grid-template-columns:auto 1fr;gap:1px 8px;margin:6px 0}
 .pop dt{color:var(--muted)} .pop dd{margin:0;font-weight:700}
@@ -371,11 +373,11 @@ textarea{min-height:76px;resize:vertical}
 .demand small{display:block;color:var(--muted);font-size:12.5px}
 
 /* auth */
-.auth-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-block:10px 0}
+.auth-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:22px 16px 20px;border-radius:20px;color:#fff;background:linear-gradient(180deg,rgba(18,42,26,.35),rgba(18,42,26,.8)),url(img/auth.jpg) center/cover #2d6a3e}
 .auth-hero img{width:88px;height:88px;border-radius:24px;box-shadow:var(--shadow)}
-.auth-hero h2{font-size:27px;font-weight:900;color:var(--bamboo);letter-spacing:.06em}
-.auth-hero p{font-size:14.5px;font-weight:700;text-wrap:balance}
-.auth-hero .sub{font-size:12.5px;color:var(--muted);font-weight:400}
+.auth-hero h2{font-size:27px;font-weight:900;color:#fff;letter-spacing:.06em;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.auth-hero p{font-size:14.5px;font-weight:700;text-wrap:balance;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.auth-hero .sub{font-size:12.5px;color:rgba(255,255,255,.9);font-weight:400}
 .who-q{font-family:var(--f-display);font-size:20px;text-align:center}
 .role-big{display:flex;gap:14px;align-items:center;width:100%;padding:18px 16px;border-radius:18px;border:2px solid var(--line);background:var(--surface);text-align:left;box-shadow:var(--shadow)}
 .role-big:hover{border-color:var(--bamboo)}
@@ -504,7 +506,7 @@ function seedDB() {
   const T = (id, conds = []) => ({ id, conds });
   const sat0 = nextDow(6, 0), sun0 = nextDow(0, 0), sat1 = nextDow(6, 1), sun1 = nextDow(0, 1), sat2 = nextDow(6, 2), sat3 = nextDow(6, 3), sun3 = nextDow(0, 3);
   return {
-    ver: 1, seq: 2000,
+    ver: 2, seq: 2000,
     accounts: [
       A('owner', 'owner', '竹田 和子', { area: '阿南市宝田町', hasGrove: 'yes', groveCount: 2, troubles: ['高齢で作業ができない', '人手が足りない'], demo: true }),
       A('worker', 'worker', '阿南 太郎', { area: '阿南市内', org: '阿南高専 情報コース', days: [0, 6], times: ['午前', '午後'], exp: 'some', course: false, license: false, tasks: ['survey', 'photo', 'sort', 'haul', 'pr'], burden: 2, purposes: ['earn', 'career', 'learn', 'local'], demo: true }),
@@ -518,35 +520,35 @@ function seedDB() {
       A('w4', 'worker', '岡 里奈', { area: '阿南市羽ノ浦町', org: '地域おこし協力隊', days: [6, 0], times: ['終日'], exp: 'some', tasks: ['pr', 'event', 'craft'], burden: 2, purposes: ['local', 'contrib'] }),
     ],
     groves: [
-      { id: 1, ownerId: 'o2', name: '見能林町の裏山竹林', district: '阿南市 見能林地区', addr: '見能林町 青木神社の裏', lat: 33.9045, lng: 134.6770, size: 1200, seed: 3,
+      { id: 1, img: 'img/g1.jpg', ownerId: 'o2', name: '見能林町の裏山竹林', district: '阿南市 見能林地区', addr: '見能林町 青木神社の裏', lat: 33.9045, lng: 134.6770, size: 1200, seed: 3,
         cond: { level: 0, density: 0, fallen: true, note: '' }, reason: '竹が家の屋根まで伸びてきた', troubles: '何年も手入れできておらず、どこから手をつければよいかわからない',
         stage: 0, log: [], next: ['survey', 'photo', 'clean'], issues: 'まず竹林の状態を調べてほしい', uses: ['竹チップ'], useNote: '' },
-      { id: 2, ownerId: 'o4', name: '富岡町の竹やぶ', district: '阿南市 富岡地区', addr: '富岡町 県道沿いの畑の奥', lat: 33.9230, lng: 134.6520, size: 800, seed: 7,
+      { id: 2, img: 'img/g2.jpg', ownerId: 'o4', name: '富岡町の竹やぶ', district: '阿南市 富岡地区', addr: '富岡町 県道沿いの畑の奥', lat: 33.9230, lng: 134.6520, size: 800, seed: 7,
         cond: { level: 1, density: 0, fallen: true, note: '倒れた竹が道をふさいでいる' }, reason: '倒れた竹で畑に入れない', troubles: '倒れた竹が多く、自分では片付けられない',
         stage: 1, log: [{ date: addDays(-20), text: '現地調査（倒れた竹 約60本を確認）', by: '岡 里奈' }], next: ['sort', 'haul', 'pro'], issues: '倒れた竹の片付けと、傾いた竹の伐採', uses: ['竹炭', '竹チップ'], useNote: '整理した竹は持ち帰り自由' },
-      { id: 3, ownerId: 'o3', name: '那賀川沿いの竹林', district: '阿南市 那賀川地区', addr: '那賀川町 堤防下の駐車場から徒歩3分', lat: 33.9445, lng: 134.6290, size: 3000, seed: 11,
+      { id: 3, img: 'img/g3.jpg', ownerId: 'o3', name: '那賀川沿いの竹林', district: '阿南市 那賀川地区', addr: '那賀川町 堤防下の駐車場から徒歩3分', lat: 33.9445, lng: 134.6290, size: 3000, seed: 11,
         cond: { level: 1, density: 0, fallen: false, note: '' }, reason: '河川敷まで竹が広がっている', troubles: '会員が高齢化して人手が足りない',
         stage: 3, log: [{ date: addDays(-60), text: '現地調査・写真記録', by: '竹林の会' }, { date: addDays(-40), text: '一部整理（約200本）', by: '竹林の会・参加者8名' }, { date: addDays(-26), text: '竹の運搬（軽トラ6台分）', by: '阿南 太郎ほか' }],
         next: ['haul', 'craft', 'event'], issues: '奥のエリアの竹がまだ残っている', uses: ['竹炭', '工芸品'], useNote: '会の竹炭窯で竹炭にします' },
-      { id: 4, ownerId: 'o4', name: '桑野町の山の竹林', district: '阿南市 桑野地区', addr: '桑野町 森本農園の裏山', lat: 33.8800, lng: 134.6010, size: 2000, seed: 5,
+      { id: 4, img: 'img/g4.jpg', ownerId: 'o4', name: '桑野町の山の竹林', district: '阿南市 桑野地区', addr: '桑野町 森本農園の裏山', lat: 33.8800, lng: 134.6010, size: 2000, seed: 5,
         cond: { level: 0, density: 0, fallen: false, note: '斜面で足場が悪い' }, reason: '畑まで竹が広がってきた', troubles: '斜面で危ないので専門の人にお願いしたい',
         stage: 1, log: [{ date: addDays(-35), text: '現地調査', by: '森本農園' }], next: ['pro', 'sort'], issues: '斜面の竹の伐採', uses: ['バイオマス'], useNote: '' },
-      { id: 5, ownerId: 'o6', name: '羽ノ浦町の竹工房の竹林', district: '阿南市 羽ノ浦地区', addr: '羽ノ浦町 川口竹工房の裏', lat: 33.9510, lng: 134.6000, size: 700, seed: 13,
+      { id: 5, img: 'img/g5.jpg', ownerId: 'o6', name: '羽ノ浦町の竹工房の竹林', district: '阿南市 羽ノ浦地区', addr: '羽ノ浦町 川口竹工房の裏', lat: 33.9510, lng: 134.6000, size: 700, seed: 13,
         cond: { level: 2, density: 1, fallen: false, note: '' }, reason: '工房で使う竹を育てている', troubles: '加工や発信を手伝ってくれる人がほしい',
         stage: 4, log: [{ date: addDays(-90), text: '一部整理', by: '川口竹工房' }, { date: addDays(-50), text: '竹の運搬', by: '岡 里奈ほか' }, { date: addDays(-12), text: '竹かごづくりワークショップ', by: '参加者6名' }],
         next: ['craft', 'pr'], issues: '', uses: ['工芸品', '建材'], useNote: '商用利用OK（量が多い場合は相談）' },
-      { id: 6, ownerId: 'o5', name: '福井町の山の竹林', district: '阿南市 福井地区', addr: '福井町 公民館から車で5分', lat: 33.8540, lng: 134.6400, size: 5000, seed: 17,
+      { id: 6, img: 'img/g6.jpg', ownerId: 'o5', name: '福井町の山の竹林', district: '阿南市 福井地区', addr: '福井町 公民館から車で5分', lat: 33.8540, lng: 134.6400, size: 5000, seed: 17,
         cond: { level: 0, density: 0, fallen: true, note: '長年手入れができていない' }, reason: '山道が竹でふさがっている', troubles: '広すぎて地区だけでは手が回らない',
         stage: 0, log: [], next: ['survey', 'photo', 'pr', 'event'], issues: '', uses: ['竹炭', 'バイオマス'], useNote: '' },
-      { id: 7, ownerId: 'owner', name: '宝田町の竹林', district: '阿南市 宝田地区', addr: '宝田町 竹田さん宅の裏（駐車場あり）', lat: 33.9120, lng: 134.6320, size: 900, seed: 19,
+      { id: 7, img: 'img/g7.jpg', ownerId: 'owner', name: '宝田町の竹林', district: '阿南市 宝田地区', addr: '宝田町 竹田さん宅の裏（駐車場あり）', lat: 33.9120, lng: 134.6320, size: 900, seed: 19,
         cond: { level: 1, density: 0, fallen: true, note: '' }, reason: '祖父から受け継いだが手が回らない', troubles: '高齢で、自分では竹を切ったり運んだりできない',
         stage: 2, log: [{ date: addDays(-30), text: '現地調査（竹 約300本・倒れた竹 約40本）', by: '阿南 太郎' }, { date: addDays(-16), text: '写真記録（整備前の様子）', by: '阿南 太郎' }, { date: addDays(-4), text: '一部清掃（入口から10mの範囲）', by: '阿南 太郎' }],
         next: ['sort', 'haul', 'pro'], issues: '奥のエリアに倒れた竹が残っている', uses: ['メンマ（食品）', '竹炭'], useNote: '春のたけのこはメンマに。持ち帰りOK（商用は相談）' },
-      { id: 8, ownerId: 'owner', name: '長生町の竹林', district: '阿南市 長生地区', addr: '長生町 農道の突き当たり', lat: 33.8990, lng: 134.6180, size: 600, seed: 23,
+      { id: 8, img: 'img/g8.jpg', ownerId: 'owner', name: '長生町の竹林', district: '阿南市 長生地区', addr: '長生町 農道の突き当たり', lat: 33.8990, lng: 134.6180, size: 600, seed: 23,
         cond: { level: 2, density: 1, fallen: false, note: '' }, reason: '整備後の状態を保ちたい', troubles: '',
         stage: 5, log: [{ date: addDays(-200), text: '現地調査', by: '地域の参加者' }, { date: addDays(-160), text: '伐採・整理（専門家の立ち会い）', by: '森 健一ほか' }, { date: addDays(-120), text: '竹の運搬', by: '参加者5名' }, { date: addDays(-70), text: '竹炭づくり', by: '森 健一' }],
         next: ['survey', 'clean'], issues: '', uses: ['竹炭'], useNote: '' },
-      { id: 9, ownerId: 'o2', name: '加茂谷の竹林', district: '阿南市 加茂谷地区', addr: '加茂谷 旧道沿い', lat: 33.8890, lng: 134.5720, size: 1500, seed: 29,
+      { id: 9, img: 'img/g9.jpg', ownerId: 'o2', name: '加茂谷の竹林', district: '阿南市 加茂谷地区', addr: '加茂谷 旧道沿い', lat: 33.8890, lng: 134.5720, size: 1500, seed: 29,
         cond: { level: 1, density: 1, fallen: false, note: '' }, reason: '道路にはみ出す竹を切りたい', troubles: '',
         stage: 2, log: [{ date: addDays(-45), text: '一部整理', by: '参加者4名' }], next: ['haul'], issues: '今年度の募集は終了しました', uses: [], useNote: '', paused: true },
     ],
@@ -610,7 +612,7 @@ function seedDB() {
   };
 }
 function loadDB() {
-  try { const j = localStorage.getItem(DB_KEY); if (j) { const d = JSON.parse(j); if (d && d.ver === 1) return d; } } catch (e) {}
+  try { const j = localStorage.getItem(DB_KEY); if (j) { const d = JSON.parse(j); if (d && d.ver === 2) return d; } } catch (e) {}
   return seedDB();
 }
 function saveDB() { try { localStorage.setItem(DB_KEY, JSON.stringify(db)); } catch (e) { toast('この端末に保存できませんでした（容量がいっぱいの可能性があります）'); } }
@@ -780,23 +782,7 @@ const TASK_ICON = {
   pro: s => sv(s, '<path d="M4 20L15 9"/><path d="M13 7l4 4 3-3-4-4z"/><path d="M6.5 17.5l1.5 1.5M9 15l1.5 1.5M11.5 12.5L13 14"/>'),
   other: s => sv(s, '<circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/>'),
 };
-function photo(seed) {
-  let s = seed * 9301 + 49297; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
-  const sky = ['#cfe6c0', '#d9ecc6', '#c6e2c9', '#e1eec2'][seed % 4];
-  let st = '', lv = '';
-  for (let i = 0; i < 11; i++) {
-    const x = 6 + i * 14.5 + r() * 8, w = 3 + r() * 3.5, c = ['#5e9a3f', '#4d8a37', '#6fae47', '#3f7a31'][Math.floor(r() * 4)];
-    st += `<rect x="${x.toFixed(1)}" y="-2" width="${w.toFixed(1)}" height="104" fill="${c}"/>`;
-    for (let y = 12 + r() * 14; y < 100; y += 22 + r() * 6) st += `<rect x="${(x - .6).toFixed(1)}" y="${y.toFixed(1)}" width="${(w + 1.2).toFixed(1)}" height="1.6" fill="#2f5e25" opacity=".7"/>`;
-  }
-  for (let i = 0; i < 26; i++) { const x = r() * 160, y = r() * 45, a = -40 + r() * 80; lv += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="9" ry="2.4" fill="${r() > .5 ? '#7cb84e' : '#98c95c'}" transform="rotate(${a.toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`; }
-  return `<svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="160" height="100" fill="${sky}"/><rect y="82" width="160" height="18" fill="#a9c77d"/>${st}${lv}</svg>`;
-}
-const groveImg = g => g.photo ? `<img src="${g.photo}" alt="">` : photo(g.seed);
-const art = `<svg class="art" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <g fill="rgba(255,255,255,.12)"><rect x="268" width="12" height="240"/><rect x="300" width="16" height="240"/><rect x="340" width="10" height="240"/><rect x="368" width="14" height="240"/></g>
-  <g fill="rgba(0,0,0,.13)"><rect x="266" y="60" width="16" height="3"/><rect x="266" y="140" width="16" height="3"/><rect x="298" y="40" width="20" height="3"/><rect x="298" y="120" width="20" height="3"/><rect x="338" y="80" width="14" height="3"/><rect x="366" y="30" width="18" height="3"/><rect x="366" y="150" width="18" height="3"/></g>
-  <g fill="rgba(255,255,255,.2)"><ellipse cx="246" cy="40" rx="26" ry="6" transform="rotate(-25 246 40)"/><ellipse cx="334" cy="20" rx="24" ry="5" transform="rotate(20 334 20)"/><ellipse cx="360" cy="110" rx="22" ry="5" transform="rotate(-15 360 110)"/></g></svg>`;
+const groveImg = g => `<img src="${g.photo || g.img || 'img/gdef.jpg'}" alt="${esc(g.name)}の写真" loading="lazy">`;
 
 /* ---------- 地図（地理院地図 + Leaflet） ---------- */
 let maps = [];
@@ -860,7 +846,7 @@ const SCREENS = {
   auth() {
     const t = state.authTab, role = state.signupRole;
     const hero = `<section class="auth-hero"><img src="../logo.png" alt="竹つなぎのロゴ"><h2>竹つなぎ</h2>
-      <p>竹林の“してほしい”と、あなたの“やりたい”をつなぐ。</p>
+      <p>竹林の“してほしい”と、<br>あなたの“やりたい”をつなぐ。</p>
       <p class="sub">放置される竹林を、人が集まり、継続的に管理され、資源が循環する竹林へ。</p></section>`;
     const seg = `<div class="seg" role="tablist"><button role="tab" aria-selected="${t === 'login'}" data-act="authtab" data-t="login">ログイン</button><button role="tab" aria-selected="${t === 'signup'}" data-act="authtab" data-t="signup">新規登録</button></div>`;
     if (t === 'login') return `${hero}${seg}
@@ -1304,7 +1290,8 @@ const SCREENS = {
       ${workerFields(u)}
     </form>
     <button class="btn ghost" data-act="go" data-to="bamboo">${I.cycle(20)}竹の活用を見る（竹を使いたい方）</button>
-    <div class="row"><button class="btn quiet" data-act="logout">ログアウト</button></div>`;
+    <div class="row"><button class="btn quiet" data-act="logout">ログアウト</button></div>
+    <p class="note">写真：Wikimedia Commons（CC0）／見能林町の竹林は提供写真</p>`;
   },
   mypage() {
     const u = me(), mine = db.groves.filter(isMine);
@@ -1320,7 +1307,8 @@ const SCREENS = {
       <div><dt class="hint">電話番号</dt><dd style="margin:0">${esc(u.phone || '未登録')}</dd></div>
       <div><dt class="hint">竹林整備で困っていること</dt><dd style="margin:0"><div class="tags">${(u.troubles || []).map(t => `<span class="tag wrap">${esc(t)}</span>`).join('') || '—'}</div></dd></div>
     </dl>
-    <button class="btn quiet" data-act="logout">ログアウト</button>`;
+    <button class="btn quiet" data-act="logout">ログアウト</button>
+    <p class="note">写真：Wikimedia Commons（CC0）／見能林町の竹林は提供写真</p>`;
   },
 
   /* ---------- 竹の活用 ---------- */
@@ -1329,6 +1317,7 @@ const SCREENS = {
     const mine = isOwner() ? lots.filter(l => isMine(grove(l.groveId))) : [];
     const others = isOwner() ? lots.filter(l => !isMine(grove(l.groveId))) : lots;
     return `
+    <div class="banner"><img src="img/use.jpg" alt="手入れされた竹林"></div>
     <section class="box"><h3>整備した竹を、必要な人・事業者へ</h3>
       <p class="hint">竹の状態や特徴を記録すると、合った活用先を提案します。将来は「竹の状態 × 事業者 × 用途」を自動でマッチングする想定です。</p>
       <div class="flow"><span>整備</span>→<span>竹を記録</span>→<span>用途を提案</span>→<span>事業者につなぐ</span></div></section>
@@ -1475,7 +1464,7 @@ function filteredGroves() {
 }
 function popupHTML(g) {
   const r = openReq(g);
-  return `<div class="pop"><h4>${esc(g.name)}</h4>${stBadge(g)}
+  return `<div class="pop"><div class="pop-img">${groveImg(g)}</div><h4>${esc(g.name)}</h4>${stBadge(g)}
     <dl><dt>規模</dt><dd>${num(g.size)}㎡</dd><dt>整備状況</dt><dd>${progress(g)}%（${STAGES[g.stage]}）</dd>
     ${r ? `<dt>必要人数</dt><dd>${r.people}人（あと${Math.max(0, r.people - joined(r))}人）</dd><dt>作業</dt><dd>${taskNames(r.tasks.map(t => t.id))}</dd><dt>負担度</dt><dd>${BURDEN[r.burden][0]}</dd><dt>報酬</dt><dd>${esc(rewardSummary(r))}</dd>` : '<dt>募集</dt><dd>現在なし</dd>'}
     <dt>次に必要</dt><dd>${g.next.map(t => TASKS[t].label).join('・') || '未定'}</dd></dl>

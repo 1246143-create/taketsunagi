@@ -32,3 +32,23 @@
   - 地図は募集状況（募集中・整備中・継続管理中・募集終了）で色分け。正確な位置はマッチング成立後にだけ共有
   - 活動完了時に「できたこと・残っている課題・次に必要な作業」を記録し、整備状況（%）を更新。次の作業で続けて募集でき、「前回の続きに参加する」ことができる
   - 竹林活動実績は、伐採も調査・記録・清掃・広報・活用もほぼ同じ配点。初挑戦・継続参加にボーナス
+
+## 写真について
+
+v4 の写真は、Wikimedia Commons で **CC0（パブリックドメイン）** として公開されている写真を使っています。CC0 は著作権を放棄した作品なので、クレジット表記なしで自由に利用・加工できます（礼儀として下に出典を記載しています）。
+見能林町の竹林の写真（`v4/img/g1.jpg`）は、作者が撮影した放置竹林の写真です。
+
+| ファイル | 使用場所 | 元の写真 | 撮影者 | ライセンス |
+|---|---|---|---|---|
+| `v4/img/hero.jpg` | ホーム画面のバナー | [Arashiyama Bamboo Forest, Kyoto, Japan (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Arashiyama_Bamboo_Forest,_Kyoto,_Japan_(Unsplash).jpg) | Ståle Grut stalebg | CC0 |
+| `v4/img/auth.jpg` | ログイン画面 | [Japan The Bamboo Forest (13914447656).jpg](https://commons.wikimedia.org/wiki/File:Japan_The_Bamboo_Forest_(13914447656).jpg) | Yiannis Theologos Michellis | CC0 |
+| `v4/img/use.jpg` | 竹の活用画面 | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08150.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08150.JPG) | Daderot | CC0 |
+| `v4/img/g2.jpg` | 竹林 2 の写真 | [Arashiyama Bamboo Grove (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Arashiyama_Bamboo_Grove_(Unsplash).jpg) | Erol Ahmed erol | CC0 |
+| `v4/img/g3.jpg` | 竹林 3 の写真 | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08161.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08161.JPG) | Daderot | CC0 |
+| `v4/img/g4.jpg` | 竹林 4 の写真 | [Bamboo invading forest in Kamakura, Japan.jpg](https://commons.wikimedia.org/wiki/File:Bamboo_invading_forest_in_Kamakura,_Japan.jpg) | Chirua | CC0 |
+| `v4/img/g5.jpg` | 竹林 5 の写真 | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08147.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08147.JPG) | Daderot | CC0 |
+| `v4/img/g6.jpg` | 竹林 6 の写真 | [Moso Bamboo 568570739.jpg](https://commons.wikimedia.org/wiki/File:Moso_Bamboo_568570739.jpg) | no rights reserved | CC0 |
+| `v4/img/g7.jpg` | 竹林 7 の写真 | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08158.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08158.JPG) | Daderot | CC0 |
+| `v4/img/g8.jpg` | 竹林 8 の写真 | [Phyllostachys edulis - Hakusan-jinja - Chusonji, Hiraizumi, Iwate - DSC04949.jpg](https://commons.wikimedia.org/wiki/File:Phyllostachys_edulis_-_Hakusan-jinja_-_Chusonji,_Hiraizumi,_Iwate_-_DSC04949.jpg) | Daderot | CC0 |
+| `v4/img/g9.jpg` | 竹林 9 の写真 | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08145.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08145.JPG) | Daderot | CC0 |
+| `v4/img/gdef.jpg` | 写真のない竹林（標準の写真） | [Bamboo grove - Eishō-ji - Kamakura, Kanagawa, Japan - DSC08169.JPG](https://commons.wikimedia.org/wiki/File:Bamboo_grove_-_Eish%C5%8D-ji_-_Kamakura,_Kanagawa,_Japan_-_DSC08169.JPG) | Daderot | CC0 |
