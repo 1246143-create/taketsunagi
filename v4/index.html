@@ -88,6 +88,9 @@ p{margin:0}
 .concept{position:relative;border-radius:20px;overflow:hidden;background:var(--bamboo);color:var(--on-bamboo);padding:20px 18px 18px;display:flex;flex-direction:column;gap:6px}
 .concept svg.art{position:absolute;inset:0;width:100%;height:100%}
 .concept>*:not(svg){position:relative}
+/* 実際の竹林の写真。文字が読めるよう下に向かって濃くなる緑のかげをのせる（明暗どちらのテーマでも白文字） */
+.concept.photo{min-height:230px;justify-content:flex-end;color:#fff;background:linear-gradient(180deg,rgba(18,42,26,.25) 0%,rgba(18,42,26,.55) 45%,rgba(18,42,26,.88) 100%),url(hero.jpg) center 40%/cover #2d6a3e}
+.concept.photo h2,.concept.photo p{text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .concept .hello{font-size:13px;font-weight:700;opacity:.9}
 .concept h2{font-size:21px;font-weight:900;line-height:1.45}
 .concept p{font-size:13px;opacity:.92}
@@ -916,7 +919,7 @@ const SCREENS = {
   /* ---------- ホーム ---------- */
   home() {
     const u = me();
-    const concept = `<section class="concept">${art}<p class="hello">こんにちは、${esc(u.name)}さん</p><h2>竹林の“してほしい”と、<br>あなたの“やりたい”をつなぐ。</h2>
+    const concept = `<section class="concept photo"><p class="hello">こんにちは、${esc(u.name)}さん</p><h2>竹林の“してほしい”と、<br>あなたの“やりたい”をつなぐ。</h2>
       <p>${isOwner() ? '自分では整備できない竹林も、必要な作業を登録すれば担い手が見つかります。' : '自分の目的に合った竹林の活動を見つけよう。'}</p></section>`;
     const purposeBtns = `<section><div class="section-title">何がしたいですか？</div><div class="purpose-pick">${HOME_PURPOSES.map(p => `<button data-act="purposego" data-p="${p}">${PURPOSE[p].btn}</button>`).join('')}</div></section>`;
     if (isOwner()) {
